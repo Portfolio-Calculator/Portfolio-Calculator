@@ -10,17 +10,20 @@ async function getDates(symbol, date_from, date_to) {
   let finalData = {};
   for (let i = 0; i < data.data.length; i++) {
     let eachDataPoint = data.data[i];
+    let symbol = eachDataPoint.symbol;
     let date = eachDataPoint.date.slice(0, 10);
-    if (finalData[date]) {
-      finalData[date].push({symbol: eachDataPoint.symbol, value: eachDataPoint.open, date: date})
+    if (finalData[symbol]) {
+      finalData[symbol].push({close: eachDataPoint.close, name: symbol, low: eachDataPoint.low, high: eachDataPoint.high, volume: eachDataPoint.volume, open: eachDataPoint.open, date: date})
     } else {
-      finalData[date] = [{symbol: eachDataPoint.symbol, value: eachDataPoint.open, date: date}];
+      finalData[symbol] = [{close: eachDataPoint.close, name: symbol, low: eachDataPoint.low, high: eachDataPoint.high, volume: eachDataPoint.volume, open: eachDataPoint.open, date: date}];
     }
   }
   console.log(data);
   console.log('finalData', finalData, 'stringified finalData', JSON.stringify(finalData));
   return data;
 }
+// drop adj/exchange, add name, symbol
+// symbol as the key, {key: value}
 
 
 export default async function APIComponent({ symbol = 'AAPL,GOOGL', date_from = '2023-01-25', date_to = '2023-01-31'}) {
