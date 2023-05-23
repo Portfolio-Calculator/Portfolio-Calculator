@@ -1,7 +1,8 @@
 import React from 'react';
 import { PieChart, Pie, Cell } from 'recharts';
 
-const PortfolioAllocationPieChart = ({ portfolioAllocation }) => {
+const PortfolioAllocationPieChart =(props) => {
+  const { portfolioAllocation } = props;
   const data = Object.entries(portfolioAllocation).map(([company, { allocation }]) => ({
     company,
     allocation: parseFloat(allocation),

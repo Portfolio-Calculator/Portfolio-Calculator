@@ -1,22 +1,19 @@
-import React from 'react';
+import React from "react";
 
 const TradingDataRow = (props) => {
-  const { data, allocation, profits } = props;
+  const { item } = props;
+  const { date, stocks, profits, total } = item;
 
   return (
-    <tr key={data.date}>
-      <td>{data.date}</td>
-      {/* <td>{data.total}</td> */}
-      {Object.keys(allocation).map((stock) => (
-        // <td key={stock}>{data.stocks[stock]}</td>
+    <tr key={date}>
+      <td>{date}</td>
+      {Object.keys(stocks).map((stock) => (
         <React.Fragment key={stock}>
-          <td>{data.stocks[stock]}</td>
-          <td>{data.profits[stock]}</td>
+          <td>{stocks[stock]}</td>
+          <td>{profits[stock]}</td>
         </React.Fragment>
       ))}
-      {/* {Object.keys(profits).map((stock) => (
-        <td key={stock}>{data.profits[stock]}</td>
-      ))} */}
+      <td>{total}</td>
     </tr>
   );
 };
