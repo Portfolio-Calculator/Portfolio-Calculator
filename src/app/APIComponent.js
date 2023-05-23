@@ -22,9 +22,6 @@ async function getDates(symbol, date_from, date_to) {
   console.log('finalData', finalData, 'stringified finalData', JSON.stringify(finalData));
   return data;
 }
-// drop adj/exchange, add name, symbol
-// symbol as the key, {key: value}
-
 
 export default async function APIComponent({ symbol = 'AAPL,GOOGL', date_from = '2023-01-25', date_to = '2023-01-31'}) {
   const data = await getDates(symbol, date_from, date_to)
