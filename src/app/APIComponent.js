@@ -12,10 +12,19 @@ async function getDates(symbol, date_from, date_to) {
     let eachDataPoint = data.data[i];
     let symbol = eachDataPoint.symbol;
     let date = eachDataPoint.date.slice(0, 10);
+    let formatedData = {
+      name: symbol,
+      high: eachDataPoint.high,
+      low: eachDataPoint.low,
+      open: eachDataPoint.open,
+      close: eachDataPoint.close,
+      volume: eachDataPoint.volume,
+    }
     if (finalData[symbol]) {
-      finalData[symbol].push({close: eachDataPoint.close, name: symbol, low: eachDataPoint.low, high: eachDataPoint.high, volume: eachDataPoint.volume, open: eachDataPoint.open, date: date})
+      finalData[symbol][date] = formatedData;
     } else {
-      finalData[symbol] = [{close: eachDataPoint.close, name: symbol, low: eachDataPoint.low, high: eachDataPoint.high, volume: eachDataPoint.volume, open: eachDataPoint.open, date: date}];
+      finalData[symbol] = {};
+      finalData[symbol][date] = formatedData;
     }
   }
   console.log(data);
