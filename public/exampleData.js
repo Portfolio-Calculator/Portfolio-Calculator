@@ -1,4 +1,5 @@
 export default exampleData = {
+<<<<<<< HEAD
   "initialBalance": 1000,
   "portfolioAllocation": {
     "AAPL": {
@@ -12,6 +13,8 @@ export default exampleData = {
       "finalBalance": 510
     }
   },
+=======
+>>>>>>> main
   "AAPL": {
     "2023-01-31": {
       "name": "AAPL",
@@ -94,6 +97,11 @@ export default exampleData = {
       "open": 500.00,
       "close": 498.17,
       "volume": 42329952
+<<<<<<< HEAD
     },
   },
+=======
+    }
+  }
+>>>>>>> main
 }
