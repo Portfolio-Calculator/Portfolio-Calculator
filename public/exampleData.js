@@ -4,96 +4,96 @@ export default exampleData = {
     "AAPL": {
       "allocation": 0.5,
       "initialBalance": 500,
-      "finalBalance": 510
+      "finalBalance": 505
     },
     "GOOGL": {
       "allocation": 0.5,
       "initialBalance": 500,
-      "finalBalance": 515
+      "finalBalance": 510
     }
   },
   "AAPL": {
     "2023-01-31": {
       "name": "AAPL",
-      "high": 144.34,
-      "low": 142.28,
-      "open": 142.7,
-      "close": 144.29,
+      "high": 505.75,
+      "low": 498.53,
+      "open": 500.00,
+      "close": 505.57,
       "volume": 60339047
     },
     "2023-01-30": {
       "name": "AAPL",
-      "high": 145.55,
-      "low": 142.85,
-      "open": 144.96,
-      "close": 143,
+      "high": 502.04,
+      "low": 492.72,
+      "open": 500.00,
+      "close": 493.24,
       "volume": 63947600
     },
     "2023-01-27": {
       "name": "AAPL",
-      "high": 147.23,
-      "low": 143.08,
-      "open": 143.16,
-      "close": 145.93,
+      "high": 514.21,
+      "low": 499.72,
+      "open": 500.00,
+      "close": 509.67,
       "volume": 70492800
     },
     "2023-01-26": {
       "name": "AAPL",
-      "high": 144.25,
-      "low": 141.9,
-      "open": 143.17,
-      "close": 143.96,
+      "high": 503.77,
+      "low": 495.56,
+      "open": 500.00,
+      "close": 502.76,
       "volume": 54003800
     },
     "2023-01-25": {
       "name": "AAPL",
-      "high": 142.43,
-      "low": 138.81,
-      "open": 140.89,
-      "close": 141.86,
+      "high": 505.47,
+      "low": 492.62,
+      "open": 500.00,
+      "close": 503.44,
       "volume": 65652500
     }
   },
   "GOOGL": {
     "2023-01-31": {
       "name": "GOOGL",
-      "high": 98.88,
-      "low": 96.82,
-      "open": 96.87,
-      "close": 98.84,
+      "high": 510.37,
+      "low": 499.74,
+      "open": 500.00,
+      "close": 510.17,
       "volume": 29870669
     },
     "2023-01-30": {
       "name": "GOOGL",
-      "high": 98.29,
-      "low": 96.395,
-      "open": 97.48,
-      "close": 96.94,
+      "high": 504.15,
+      "low": 494.43,
+      "open": 500.00,
+      "close": 497.23,
       "volume": 27226198
     },
     "2023-01-27": {
       "name": "GOOGL",
-      "high": 100.32,
-      "low": 97.31,
-      "open": 97.31,
-      "close": 99.37,
+      "high": 515.47,
+      "low": 500.00,
+      "open": 500.00,
+      "close": 510.58,
       "volume": 33879753
     },
     "2023-01-26": {
       "name": "GOOGL",
-      "high": 97.57,
-      "low": 95.38,
-      "open": 96.5,
-      "close": 97.52,
+      "high": 505.54,
+      "low": 494.20,
+      "open": 500.00,
+      "close": 505.28,
       "volume": 30113974
     },
     "2023-01-25": {
       "name": "GOOGL",
-      "high": 96.162,
-      "low": 93.76,
-      "open": 95.57,
-      "close": 95.22,
+      "high": 503.10,
+      "low": 490.53,
+      "open": 500.00,
+      "close": 498.17,
       "volume": 42329952
-    }
+    },
   },
 }
