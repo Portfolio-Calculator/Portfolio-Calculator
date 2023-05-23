@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Datepicker from 'react-tailwindcss-datepicker';
 
 const InputForm = () => {
-    const [stockAllocations, setStockAllocations] = useState({}); 
+    const [stockAllocations, setStockAllocations] = useState({});
     const [currSymbol, setCurrSymbol] = useState("");
     const [symbols, setSymbols] = useState([]);
     const [currPercentage, setCurrPercentage] = useState("");
