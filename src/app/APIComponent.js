@@ -10,16 +10,25 @@ async function getDates(symbol, date_from, date_to, allocation, initialBalance) 
   let finalData = {
     initialBalance: initialBalance,
   };
+  let symbolArray = symbol.split(',');
+
+  const combinedObject = symbolArray.reduce((obj, key, index) => {
+    obj[key] = allocation[index];
+    return obj;
+  }, {});
+
+  console.log(combinedObject);
+
   for (let i = 0; i < data.data.length; i++) {
     let eachDataPoint = data.data[i];
     let symbol = eachDataPoint.symbol;
     let date = eachDataPoint.date.slice(0, 10);
     let formatedData = {
       name: symbol,
-      high: eachDataPoint.high,
-      low: eachDataPoint.low,
-      open: eachDataPoint.open,
-      close: eachDataPoint.close,
+      high: (eachDataPoint.high * initialBalance * combinedObject[symbol] / eachDataPoint.open).toFixed(2),
+      low: (eachDataPoint.low * initialBalance * combinedObject[symbol] / eachDataPoint.open).toFixed(2),
+      open: (eachDataPoint.open * initialBalance * combinedObject[symbol] / eachDataPoint.open).toFixed(2),
+      close: (eachDataPoint.close * initialBalance * combinedObject[symbol] / eachDataPoint.open).toFixed(2),
       volume: eachDataPoint.volume,
     }
     if (finalData[symbol]) {
@@ -31,7 +40,6 @@ async function getDates(symbol, date_from, date_to, allocation, initialBalance) 
   }
   // adding the allocation, initial balance, and finalBalance to the finalData object
   let portfolioAllocation = {};
-  let symbolArray = symbol.split(',');
   for (let i = 0; i < allocation.length; i++) {
     portfolioAllocation[symbolArray[i]] = {
       allocation : allocation[i],
@@ -40,7 +48,7 @@ async function getDates(symbol, date_from, date_to, allocation, initialBalance) 
     };
   };
   finalData["portfolioAllocation"] = portfolioAllocation;
-  // console.log('finalData', finalData, 'stringified finalData', JSON.stringify(finalData));
+  console.log('finalData', finalData, 'stringified finalData', JSON.stringify(finalData));
   return data;
 }
 
