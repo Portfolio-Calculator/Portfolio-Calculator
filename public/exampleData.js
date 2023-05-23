@@ -1,17 +1,4 @@
 export default exampleData = {
-  "initialBalance": 1000,
-  "portfolioAllocation": {
-    "AAPL": {
-      "allocation": 0.5,
-      "initialBalance": 500,
-      "finalBalance": 510
-    },
-    "GOOGL": {
-      "allocation": 0.5,
-      "initialBalance": 500,
-      "finalBalance": 515
-    }
-  },
   "AAPL": {
     "2023-01-31": {
       "name": "AAPL",
@@ -95,5 +82,5 @@ export default exampleData = {
       "close": 95.22,
       "volume": 42329952
     }
-  },
+  }
 }
