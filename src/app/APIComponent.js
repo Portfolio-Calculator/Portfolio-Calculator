@@ -1,13 +1,15 @@
 // I haven't implemented the initialBalnce or the aloocation of stock yet
 
-async function getDates(symbol, date_from, date_to) {
+async function getDates(symbol, date_from, date_to, allocation, initialBalance) {
   const key = process.env.MARKETSTACK_API_KEY;
   let url = `http://api.marketstack.com/v1/eod?access_key=${key}&symbols=${symbol}&date_from=${date_from}&date_to=${date_to}`
   const res = await fetch(url, {
     method: 'GET',
   })
-  const data = await res.json()
-  let finalData = {};
+  const data = await res.json();
+  let finalData = {
+    initialBalance: initialBalance,
+  };
   for (let i = 0; i < data.data.length; i++) {
     let eachDataPoint = data.data[i];
     let symbol = eachDataPoint.symbol;
@@ -27,13 +29,23 @@ async function getDates(symbol, date_from, date_to) {
       finalData[symbol][date] = formatedData;
     }
   }
-  console.log(data);
-  console.log('finalData', finalData, 'stringified finalData', JSON.stringify(finalData));
+  // adding the allocation, initial balance, and finalBalance to the finalData object
+  let portfolioAllocation = {};
+  let symbolArray = symbol.split(',');
+  for (let i = 0; i < allocation.length; i++) {
+    portfolioAllocation[symbolArray[i]] = {
+      allocation : allocation[i],
+      initialBalance : allocation[i] * initialBalance,
+      finalBalance : allocation[i] * initialBalance * (finalData[symbolArray[i]][date_to].close / finalData[symbolArray[i]][date_from].open).toFixed(2),
+    };
+  };
+  finalData["portfolioAllocation"] = portfolioAllocation;
+  // console.log('finalData', finalData, 'stringified finalData', JSON.stringify(finalData));
   return data;
 }
 
-export default async function APIComponent({ symbol = 'AAPL,GOOGL', date_from = '2023-01-25', date_to = '2023-01-31'}) {
-  const data = await getDates(symbol, date_from, date_to)
+export default async function APIComponent({ symbol = 'AAPL,GOOGL', date_from = '2023-01-25', date_to = '2023-01-31', allocation = [0.5, 0.5], initialBalance = 1000 }) {
+  const data = await getDates(symbol, date_from, date_to, allocation, initialBalance);
   // object with keys {open, high, low, close, volume, adj_high, adj_low, adj_close, adj_open, adj_volume, split_factor, dividend, symbol, exchange, date})
 
   return (
